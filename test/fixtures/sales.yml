@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  sale_date: 2017-03-28
+  total: 9.99
+  remaining: 9.99
+  status: 1
+  discount: one
+
+two:
+  client: two
+  sale_date: 2017-03-28
+  total: 9.99
+  remaining: 9.99
+  status: 1
+  discount: two
