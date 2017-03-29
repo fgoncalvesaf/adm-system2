@@ -10,10 +10,18 @@
   <%= @discount.kind %>
 </p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @discount.value %>
-</p>
+
+<% if @discount.kind == 'percentage' %>
+  <p>
+  	<strong>Value:</strong>
+    <%= number_with_precision(@discount.value, precision: 0) %>
+  </p>
+<% else @discount.kind == 'money' %>
+  <p>
+  	<strong>Value:</strong>
+    <%= number_with_precision(@discount.value, precision: 2) %>
+  </p>
+<% end %>
 
 <p>
   <strong>Description:</strong>

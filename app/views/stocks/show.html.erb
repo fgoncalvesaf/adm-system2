@@ -2,7 +2,7 @@
 
 <p>
   <strong>Product:</strong>
-  <%= @stock.product %>
+  <%= @stock.product.name %>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Total:</strong>
-  <%= @stock.total %>
+  <%= number_with_precision(@stock.total, precision: 2) %>
 </p>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |

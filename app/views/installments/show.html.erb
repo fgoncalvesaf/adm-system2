@@ -2,7 +2,7 @@
 
 <p>
   <strong>Sale:</strong>
-  <%= @installment.sale %>
+  <%= @installment.sale.id %>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Value:</strong>
-  <%= @installment.value %>
+  <%= number_with_precision(@installment.value, precision: 2) %>
 </p>
 
 <%= link_to 'Edit', edit_installment_path(@installment) %> |

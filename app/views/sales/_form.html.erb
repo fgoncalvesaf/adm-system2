@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :client_id %>
-    <%= f.text_field :client_id %>
+    <%= f.select(:client_id, Client.all.collect { |c|
+    [c.name, c.id] }, {include_blank: 'Selecione...'}) %>
   </div>
 
   <div class="field">
@@ -22,23 +23,9 @@
   </div>
 
   <div class="field">
-    <%= f.label :total %>
-    <%= f.text_field :total %>
-  </div>
-
-  <div class="field">
-    <%= f.label :remaining %>
-    <%= f.text_field :remaining %>
-  </div>
-
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.number_field :status %>
-  </div>
-
-  <div class="field">
     <%= f.label :discount_id %>
-    <%= f.text_field :discount_id %>
+    <%= f.select(:discount_id, Discount.all.collect { |d|
+    [d.name, d.id] }, {include_blank: 'Selecione...'}) %>
   </div>
 
   <div class="actions">

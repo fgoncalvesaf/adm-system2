@@ -15,9 +15,9 @@
   <tbody>
     <% @installments.each do |installment| %>
       <tr>
-        <td><%= installment.sale %></td>
+        <td><%= installment.sale.id %></td>
         <td><%= installment.payment_date %></td>
-        <td><%= installment.value %></td>
+        <td><%= number_with_precision(installment.value, precision: 2) %></td>
         <td><%= link_to 'Show', installment %></td>
         <td><%= link_to 'Edit', edit_installment_path(installment) %></td>
         <td><%= link_to 'Destroy', installment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

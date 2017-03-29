@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :sale_id %>
-    <%= f.text_field :sale_id %>
+    <%= f.select(:sale_id, Sale.all.collect { |s|
+    [s.id, s.id] }, {include_blank: 'Selecione...'}) %>
   </div>
 
   <div class="field">

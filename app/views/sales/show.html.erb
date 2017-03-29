@@ -2,7 +2,7 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @sale.client %>
+  <%= @sale.client.name %>
 </p>
 
 <p>
@@ -25,10 +25,17 @@
   <%= @sale.status %>
 </p>
 
-<p>
-  <strong>Discount:</strong>
-  <%= @sale.discount %>
-</p>
+<% if @sale.discount.blank? %>
+  <p>
+    <strong>Discount:</strong>
+    <%= 'Sem Desconto' %>
+  </p>
+<% else %>
+    <p>
+    <strong>Discount:</strong>
+    <%= @sale.discount.name %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
 <%= link_to 'Back', sales_path %>

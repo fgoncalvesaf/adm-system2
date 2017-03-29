@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :kind %>
-    <%= f.number_field :kind %>
+    <%= f.select(:kind, [['Percentage', 'percentage'], ['Money', 'money']]) %>
   </div>
 
   <div class="field">

@@ -13,17 +13,13 @@
 
   <div class="field">
     <%= f.label :product_id %>
-    <%= f.text_field :product_id %>
+    <%= f.select(:product_id, Product.all.collect { |p|
+    [p.name, p.id] }, {include_blank: 'Selecione...'}) %>
   </div>
 
   <div class="field">
     <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
-  </div>
-
-  <div class="field">
-    <%= f.label :total %>
-    <%= f.text_field :total %>
+    <%= f.number_field :quantity, min: 0 %>
   </div>
 
   <div class="actions">
