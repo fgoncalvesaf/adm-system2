@@ -15,10 +15,14 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    @client.build_address
   end
 
   # GET /clients/1/edit
   def edit
+    unless @client.address
+      @client.build_address
+    end
   end
 
   # POST /clients
@@ -69,6 +73,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :birthday, :phone, :email, :notes)
+      params.require(:client).permit(:name, :birthday, :phone, :email, :notes, :address_attributes => [:address, :complement, :zip_code, :city, :state, :country])
     end
 end

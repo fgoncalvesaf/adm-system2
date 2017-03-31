@@ -1,41 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Sale -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Client:</strong>
-  <%= @sale.client.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:client_id) %>:</strong></dt>
+  <dd><%= @sale.client_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sale_date) %>:</strong></dt>
+  <dd><%= @sale.sale_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dd><%= @sale.total %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:remaining) %>:</strong></dt>
+  <dd><%= @sale.remaining %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @sale.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:discount_id) %>:</strong></dt>
+  <dd><%= @sale.discount_id %></dd>
+</dl>
 
-<p>
-  <strong>Sale date:</strong>
-  <%= @sale.sale_date %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%= @sale.total %>
-</p>
-
-<p>
-  <strong>Remaining:</strong>
-  <%= @sale.remaining %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @sale.status %>
-</p>
-
-<% if @sale.discount.blank? %>
-  <p>
-    <strong>Discount:</strong>
-    <%= 'Sem Desconto' %>
-  </p>
-<% else %>
-    <p>
-    <strong>Discount:</strong>
-    <%= @sale.discount.name %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              sales_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_sale_path(@sale), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              sale_path(@sale),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

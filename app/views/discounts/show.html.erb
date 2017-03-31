@@ -1,32 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Discount -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @discount.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @discount.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:kind) %>:</strong></dt>
+  <dd><%= @discount.kind %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:value) %>:</strong></dt>
+  <dd><%= @discount.value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @discount.description %></dd>
+</dl>
 
-<p>
-  <strong>Kind:</strong>
-  <%= @discount.kind %>
-</p>
-
-
-<% if @discount.kind == 'percentage' %>
-  <p>
-  	<strong>Value:</strong>
-    <%= number_with_precision(@discount.value, precision: 0) %>
-  </p>
-<% else @discount.kind == 'money' %>
-  <p>
-  	<strong>Value:</strong>
-    <%= number_with_precision(@discount.value, precision: 2) %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Description:</strong>
-  <%= @discount.description %>
-</p>
-
-<%= link_to 'Edit', edit_discount_path(@discount) %> |
-<%= link_to 'Back', discounts_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              discounts_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_discount_path(@discount), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              discount_path(@discount),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

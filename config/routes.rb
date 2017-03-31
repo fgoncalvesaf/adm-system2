@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'dashboard#home_page'
+
   resources :requests
   resources :users
   resources :stocks

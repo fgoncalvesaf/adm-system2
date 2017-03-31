@@ -19,7 +19,13 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+ gem 'therubyracer', platforms: :ruby
+
+# The dynamic stylesheet language for the Rails 4+ asset pipeline.
+gem 'less-rails', '~> 2.7.0'
+
+# Twitter Bootstrap for Rails 5 and Rails 4 Asset Pipeline
+gem "twitter-bootstrap-rails"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
