@@ -5,23 +5,21 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:sale_id) %></th>
       <th><%= model_class.human_attribute_name(:payment_date) %></th>
       <th><%= model_class.human_attribute_name(:value) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @installments.each do |installment| %>
       <tr>
-        <td><%= link_to installment.id, installment_path(installment) %></td>
-        <td><%= installment.sale_id %></td>
+        <td><%= link_to installment.sale_id, sale_path(installment.sale) %></td>
         <td><%= installment.payment_date %></td>
-        <td><%= installment.value %></td>
-        <td><%=l installment.created_at %></td>
+        <td><%= number_with_precision(installment.value, precision: 2) %></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+              installment_path(installment), :class => 'btn btn-default btn-xs'  %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_installment_path(installment), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

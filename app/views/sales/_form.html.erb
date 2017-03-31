@@ -31,27 +31,6 @@
     <%=f.error_span(:sale_date) %>
   </div>
   <div class="form-group">
-    <%= f.label :total, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :total, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:total) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :remaining, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :remaining, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:remaining) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :status, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :status, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:status) %>
-  </div>
-  <div class="form-group">
     <%= f.label :discount_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.select(:discount_id, Discount.all.collect { |d|

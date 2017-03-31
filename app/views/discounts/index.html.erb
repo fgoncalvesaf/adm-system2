@@ -9,8 +9,6 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:kind) %></th>
       <th><%= model_class.human_attribute_name(:value) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,10 +18,14 @@
         <td><%= link_to discount.id, discount_path(discount) %></td>
         <td><%= discount.name %></td>
         <td><%= discount.kind %></td>
-        <td><%= discount.value %></td>
-        <td><%= discount.description %></td>
-        <td><%=l discount.created_at %></td>
+        <% if discount.kind == 'percentage' %>
+          <td><%= number_with_precision(discount.value, precision: 0) %></td>
+        <% else %>
+          <td><%= number_with_precision(discount.value, precision: 2) %></td>
+        <% end %>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+              discount_path(discount), :class => 'btn btn-default btn-xs'  %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_discount_path(discount), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

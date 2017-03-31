@@ -10,10 +10,6 @@
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:complement) %></th>
       <th><%= model_class.human_attribute_name(:zip_code) %></th>
-      <th><%= model_class.human_attribute_name(:city) %></th>
-      <th><%= model_class.human_attribute_name(:state) %></th>
-      <th><%= model_class.human_attribute_name(:country) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,15 +17,13 @@
     <% @addresses.each do |address| %>
       <tr>
         <td><%= link_to address.id, address_path(address) %></td>
-        <td><%= address.client_id %></td>
+        <td><%= link_to address.client.name, client_path(address.client) %></td>
         <td><%= address.address %></td>
         <td><%= address.complement %></td>
         <td><%= address.zip_code %></td>
-        <td><%= address.city %></td>
-        <td><%= address.state %></td>
-        <td><%= address.country %></td>
-        <td><%=l address.created_at %></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+              address_path(address), :class => 'btn btn-default btn-xs'  %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_address_path(address), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

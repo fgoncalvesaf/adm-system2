@@ -5,11 +5,13 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:sale_id) %>:</strong></dt>
-  <dd><%= @installment.sale_id %></dd>
+  <dd><%= link_to @installment.sale_id, sale_path(@installment.sale) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:payment_date) %>:</strong></dt>
   <dd><%= @installment.payment_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:value) %>:</strong></dt>
-  <dd><%= @installment.value %></dd>
+  <dd><%= number_with_precision(@installment.value, precision: 2) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @installment.created_at %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

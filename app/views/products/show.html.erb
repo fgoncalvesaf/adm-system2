@@ -7,13 +7,15 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @product.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-  <dd><%= @product.price %></dd>
+  <dd><%= number_with_precision(@product.price, precision: 2) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:photo) %>:</strong></dt>
   <dd><%= @product.photo %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @product.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @product.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @product.created_at %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
