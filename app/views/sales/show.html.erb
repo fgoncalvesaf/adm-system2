@@ -8,26 +8,30 @@
   <dd><%= link_to @sale.client.name, client_path(@sale.client) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:sale_date) %>:</strong></dt>
   <dd><%= @sale.sale_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
-  <dd><%= number_with_precision(@sale.total, precision: 2) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:remaining) %>:</strong></dt>
-  <dd><%= number_with_precision(@sale.remaining, precision: 2) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @sale.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:discount_id) %>:</strong></dt>
   <% if @sale.discount.blank? %>
     <dd><%= '-' %></dd>
   <% else %>
     <dd><%= link_to @sale.discount.name, discount_path(@sale.discount) %></dd>
   <% end %>
-    <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dd><%= number_with_precision(@sale.total, precision: 2) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:remaining) %>:</strong></dt>
+  <dd><%= number_with_precision(@sale.remaining, precision: 2) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @sale.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
   <dd><%= @sale.created_at %></dd>
+  <br>
+  <dt><strong><%= model_class.human_attribute_name('Itens') %>:</strong></dt>
+  <% @sale.items.each do |item| %>  
+    <dd>Product: <%= link_to item.product.name, product_path(item.product) %> -- Quantity: <%= item.quantity %></dd>
+  <% end %>
+  <dd></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               sales_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_sale_path(@sale), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               sale_path(@sale),
               :method => 'delete',

@@ -27,6 +27,9 @@ gem 'less-rails', '~> 2.7.0'
 # Twitter Bootstrap for Rails 5 and Rails 4 Asset Pipeline
 gem "twitter-bootstrap-rails"
 
+# Dynamic nested forms using jQuery made easy; works with formtastic, simple_form or default forms
+gem 'cocoon'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

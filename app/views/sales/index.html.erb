@@ -8,10 +8,10 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:client_id) %></th>
       <th><%= model_class.human_attribute_name(:sale_date) %></th>
+      <th><%= model_class.human_attribute_name(:discount_id) %></th>
       <th><%= model_class.human_attribute_name(:total) %></th>
       <th><%= model_class.human_attribute_name(:remaining) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:discount_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,19 +21,20 @@
         <td><%= link_to sale.id, sale_path(sale) %></td>
         <td><%= link_to sale.client.name, client_path(sale.client) %></td>
         <td><%= sale.sale_date %></td>
-        <td><%= number_with_precision(sale.total, precision: 2) %></td>
-        <td><%= number_with_precision(sale.remaining, precision: 2) %></td>
-        <td><%= sale.status %></td>
         <% if sale.discount.blank? %>
           <td><%= '-' %></td>
         <% else %>
           <td><%= link_to sale.discount.name, discount_path(sale.discount) %></td>
         <% end %>
+        <td><%= number_with_precision(sale.total, precision: 2) %></td>
+        <td><%= number_with_precision(sale.remaining, precision: 2) %></td>
+        <td><%= sale.status %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
               sale_path(sale), :class => 'btn btn-default btn-xs'  %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_sale_path(sale), :class => 'btn btn-default btn-xs' %>
+          <% if sale.remaining > 0 %>
+            <%= link_to 'Pagamento', new_installment_path, :class => 'btn btn-default btn-xs'  %>
+          <% end %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       sale_path(sale),
                       :method => :delete,

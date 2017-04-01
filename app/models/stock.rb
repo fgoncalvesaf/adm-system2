@@ -1,5 +1,6 @@
 class Stock < ApplicationRecord
   belongs_to :product
+  validates :product, uniqueness: true
 
   # atualizar total
   before_save do
